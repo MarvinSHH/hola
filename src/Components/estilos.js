@@ -45,6 +45,22 @@ const styles = {
     fontSize: '20px',
   },
 
+  // Estilos extras que se pasan para el header de la parte publica, en donde se hace un subMenu
+  subMenu: {
+    display: 'block', // Inicialmente oculto
+    position: 'absolute',
+    backgroundColor: '#fff',
+    boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
+    zIndex: 1
+  },
+  subNavLink: {
+    color: '#000',
+    padding: '12px 16px',
+    textDecoration: 'none',
+    display: 'block',
+    // Estilos adicionales para los enlaces del submenú aquí...
+  },
+
 
 //ESTOS SON LOS ESTILOS APLICADOS PARA LOS FORMULARIOS, QUE VAN TODO LO QUE ESTA EN LA SECCION DE INICIAR SESION
 
@@ -150,7 +166,6 @@ home:{
 },
 
 hero: {
-  backgroundImage: "url('../assets/imgHome.jpg')", // Ajusta el path según la ubicación real
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   padding: '50px 20px',
@@ -163,6 +178,31 @@ hero: {
   fontSize:'25px',
   color:'white', 
   textShadow: '4px 4px 8px rgba(0, 0, 0, 0.5)',
+},
+heroOpc:{
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  padding: '50px 20px',
+  height:'130px',
+  textAlign: 'center',
+  display:'flex',
+  flexDirection:'column',
+  justifyContent:'center',
+  alignItems:'center',
+  fontSize:'25px',
+  color:'white', 
+  textShadow: '4px 4px 8px rgba(0, 0, 0, 0.5)',
+},
+textDesc:{
+  marginTop:'50px',
+  marginLeft:'20px',
+  paddingLeft:'40px',
+  paddingRight:'40px',
+  padding:'10px',
+  marginRight:'37px',
+  backgroundColor:'white',
+  borderRadius:'10px',
+
 },
 features: {
   backgroundColor: colores.fondoPrincipal,

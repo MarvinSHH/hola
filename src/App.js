@@ -8,13 +8,22 @@ import Producto from './Components/Producto';
 import Login from './Components/Login';
 import Formulario from './Components/Formulario';
 import Legal from './Components/informacionLegal.js';
+import AboutUs from './Components/aboutUs.js';
+import ContactPage from './Components/contactPage.js';
 // import nombre de la funcion/componente from lugar de donde viene
 import styles from './Components/estilos.js'; 
+
+
+// Estos van a ser las vistas para la parte privada 
+
+import PrivHeader from './Components/admin/views/PrivHeader.js';
 
 const App = () => {
   return (
     <Router>
       <Header />
+      {/* <PrivHeader /> */}
+      
       <main>
         <div style={styles.body}>
           <Routes>
@@ -23,6 +32,9 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/registrarse/*" element={<Formulario />} />
             <Route path="/legal" element={<Legal />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<ContactPage />} />
+
             {/* Para poder usar link para navegar se tienen que defiinir aqui 
             usando todo como esta, ponienndo la ruta y el renderizazdo, y definiendolo al principio */}
           </Routes>

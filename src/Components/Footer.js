@@ -8,10 +8,10 @@ const Footer = () => {
     <footer>
       <div style={styles.footerDatos}>
         <div style={styles.datos}>
-          <Link to={'/legal'}>¿Quienes Somos?</Link>
+          <Link to={'/about'}>¿Quienes Somos?</Link>
           {/* aqui se define a donde te lleva el enlace nombrandolo desde como esta registrado en appjs */}
-          <Link to={''}>Informacion Legal</Link>
-          <Link to={''}>Ayuda</Link>
+          <Link to={'/legal'}>Informacion Legal</Link>
+          <Link to={'/contact'}>Ayuda</Link>
         </div>
         <div style={styles.redes}>
           Redes Sociales<br />
