@@ -16,7 +16,6 @@ const colores = {
   textoInput: '#000', // Color de texto para los campos de entrada.
   linkText: 'blue', // Color para el texto de los enlaces.
   // Agrega más colores según necesites
-  
   footerColorUp:"#001449",
 };
 

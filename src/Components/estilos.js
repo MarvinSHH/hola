@@ -144,14 +144,25 @@ loginButtonText: {
 
 //Estilos aplicados para el home de la pagina
 home:{
+
   backgroundColor: colores.fondoPrincipal,
 
 },
 
 hero: {
-  backgroundColor: colores.fondoPrincipal,
+  backgroundImage: "url('../assets/imgHome.jpg')", // Ajusta el path según la ubicación real
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
   padding: '50px 20px',
+  height:'566px',
   textAlign: 'center',
+  display:'flex',
+  flexDirection:'column',
+  justifyContent:'center',
+  alignItems:'center',
+  fontSize:'25px',
+  color:'white', 
+  textShadow: '4px 4px 8px rgba(0, 0, 0, 0.5)',
 },
 features: {
   backgroundColor: colores.fondoPrincipal,

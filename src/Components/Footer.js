@@ -1,15 +1,17 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import styles from "./estilos";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer>
       <div style={styles.footerDatos}>
         <div style={styles.datos}>
-          <a>¿Quienes Somos?</a>
-          <a>Informacion Legal</a>
-          <a>Ayuda</a>
+          <Link to={'/legal'}>¿Quienes Somos?</Link>
+          {/* aqui se define a donde te lleva el enlace nombrandolo desde como esta registrado en appjs */}
+          <Link to={''}>Informacion Legal</Link>
+          <Link to={''}>Ayuda</Link>
         </div>
         <div style={styles.redes}>
           Redes Sociales<br />

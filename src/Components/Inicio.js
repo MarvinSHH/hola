@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./estilos";
+import imgHome from '../assets/imgHome2.jpg';
 
 
 const MainContent = () => {
-   return (
+  return (
     <div style={styles.home}>
 
-      <header style={styles.hero}>
+      <header style={{ ...styles.hero, backgroundImage: `url(${imgHome})` }}>
         <h1>Bienvenido a Planeta Mascotas</h1>
         <p>Descubre nuestros servicios y cómo podemos ayudarte a crecer.</p>
       </header>
