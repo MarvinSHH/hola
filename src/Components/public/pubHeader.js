@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import imgLogo from '../../assets/logoP.png';
+import styles from '../estilos.js'; 
 
-function PubHeader() {
-    
+function pubHeader() {
   return (
     <header style={styles.header}>
       <div style={styles.head}>
@@ -10,11 +12,12 @@ function PubHeader() {
         </div>
         <div style={styles.navStyles}>
           <nav style={styles.navLinks}>
+            <h1 style={styles.navLink}>Header Cliente Registrado</h1>
             <Link to="/" style={styles.navLink}>Inicio</Link>
-            <link to="/" style={styles.navLink}>Dispositivo</link>
             <Link to="/productos" style={styles.navLink}>Productos</Link>
+            <Link to="/" style={styles.navLink}>Dashboar</Link>
+            <Link to="/" style={styles.navLink}>Perfil</Link>
             <Link to="/registrarse" style={styles.navLink}>Cerrar Sesion</Link>
-            
           </nav>
         </div>
       </div>
@@ -22,4 +25,4 @@ function PubHeader() {
   );
 };
 
-export default PubHeader
+export default pubHeader

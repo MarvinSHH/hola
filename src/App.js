@@ -1,29 +1,34 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+//Vistas de la parte libre a los usuarios 
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Inicio from './Components/Inicio';
 import Producto from './Components/Producto';
 import Login from './Components/Login';
 import Formulario from './Components/Formulario';
+
+//Carga las visatas del footer
 import Legal from './Components/informacionLegal.js';
 import AboutUs from './Components/aboutUs.js';
 import ContactPage from './Components/contactPage.js';
 // import nombre de la funcion/componente from lugar de donde viene
 import styles from './Components/estilos.js'; 
 
-
 // Estos van a ser las vistas para la parte privada 
 
 import PrivHeader from './Components/admin/views/PrivHeader.js';
 
+//Esto va para las vistas de la parte publica, del usuario
+import PubHeader from './Components/public/pubHeader.js';
+
 const App = () => {
   return (
     <Router>
-      <Header />
+      {/* <Header /> */}
       {/* <PrivHeader /> */}
-      
+      <PubHeader />
       <main>
         <div style={styles.body}>
           <Routes>

@@ -37,6 +37,8 @@ function PrivHeader() {
                 </div>
                 <div style={styles.navStyles}>
                     <nav style={styles.navLinks}>
+                        <h1 style={styles.navLink}>Header Administrador</h1>
+
                         <div
                             style={styles.navLink}
                             onClick={toggleSubMenu} // Usar onClick aquí
