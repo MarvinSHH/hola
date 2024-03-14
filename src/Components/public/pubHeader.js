@@ -15,7 +15,7 @@ function pubHeader() {
             <h1 style={styles.navLink}>Header Cliente Registrado</h1>
             <Link to="/" style={styles.navLink}>Inicio</Link>
             <Link to="/productos" style={styles.navLink}>Productos</Link>
-            <Link to="/" style={styles.navLink}>Dashboar</Link>
+            <Link to="/" style={styles.navLink}>Dashboard</Link>
             <Link to="/" style={styles.navLink}>Perfil</Link>
             <Link to="/registrarse" style={styles.navLink}>Cerrar Sesion</Link>
           </nav>

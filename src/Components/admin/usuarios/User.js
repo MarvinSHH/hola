@@ -1,11 +1,11 @@
 import React from 'react'
 
-function editProduct() {
+function User() {
   return (
     <div>
-      
+      Usuarios
     </div>
   )
 }
 
-export default editProduct
+export default User

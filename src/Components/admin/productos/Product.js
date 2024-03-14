@@ -1,11 +1,11 @@
 import React from 'react'
 
-function EditProduct() {
+function Product() {
   return (
     <div>
-      
+      Productos
     </div>
   )
 }
 
-export default EditProduct
+export default Product

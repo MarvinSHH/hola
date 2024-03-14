@@ -11,7 +11,7 @@ const Footer = () => {
           <Link to={'/about'}>¿Quienes Somos?</Link>
           {/* aqui se define a donde te lleva el enlace nombrandolo desde como esta registrado en appjs */}
           <Link to={'/legal'}>Informacion Legal</Link>
-          <Link to={'/contact'}>Ayuda</Link>
+          <Link to={'/contact'}>Contactanos</Link>
         </div>
         <div style={styles.redes}>
           Redes Sociales<br />

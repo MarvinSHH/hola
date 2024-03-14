@@ -47,8 +47,8 @@ function PrivHeader() {
 
                             {showSubMenu && (
                                 <div style={styles.subMenu}>
-                                    <Link to="/admin/opcion1" style={styles.subNavLink}>Opción 1</Link>
-                                    <Link to="/admin/opcion2" style={styles.subNavLink}>Opción 2</Link>
+                                    <Link to="/user" style={styles.subNavLink}>usuarios</Link>
+                                    <Link to="/product" style={styles.subNavLink}>Productos</Link>
                                     {/* Más enlaces del submenú */}
                                 </div>
                             )}
