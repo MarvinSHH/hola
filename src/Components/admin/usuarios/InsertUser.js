@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 function Insertuser() {
-  const [formData, setFormData] = useState({
+  const initialState = {
     nombre: "",
     apellido: "",
     correo: "",
     contraseña: "",
     telefono: "",
-    tipo: "usuario",
-    preguntaRecuperacion: "colorFavorito",
+    tipo: "usuario", // Valor predeterminado para tipo
+    preguntaRecuperacion: "colorFavorito", // Valor inicial
     respuestaPregunta: "",
     codigoRecuperacion: "",
     dispositivo: "",
-  });
+  };
+
+  const [formData, setFormData] = useState(initialState);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -37,22 +40,22 @@ function Insertuser() {
         throw new Error("Error al registrar usuario");
       }
 
-      //const data = await response.json();
-      console.log("Usuario registrado exitosamente:");
-      // Si la respuesta es OK, muestra una alerta personalizada.
+      // Mostrar mensaje de éxito
       Swal.fire({
         title: "Éxito",
-        text: "Producto registrado exitosamente",
+        text: "Usuario registrado exitosamente",
         icon: "success",
         confirmButtonText: "Aceptar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setFormData(initialState); // Restablecer el formulario
+        }
       });
-      // Puedes agregar aquí lógica adicional después de registrar el usuario
     } catch (error) {
-      console.error("Error al registrar usuario:", error);
-      // Si hay un error, muestra una alerta personalizada con el mensaje de error.
+      // Mostrar mensaje de error
       Swal.fire({
         title: "Error",
-        text: `Error al registrar productos: ${error.message}`,
+        text: `Error al registrar usuario: ${error.message}`,
         icon: "error",
         confirmButtonText: "Aceptar",
       });
@@ -63,6 +66,7 @@ function Insertuser() {
     <div>
       <h2>Agregar Usuario</h2>
       <form onSubmit={handleSubmit}>
+        {/* Nombre */}
         <div>
           <label>Nombre:</label>
           <input
@@ -73,6 +77,7 @@ function Insertuser() {
             required
           />
         </div>
+        {/* Apellido */}
         <div>
           <label>Apellido:</label>
           <input
@@ -83,6 +88,7 @@ function Insertuser() {
             required
           />
         </div>
+        {/* Correo */}
         <div>
           <label>Correo:</label>
           <input
@@ -93,6 +99,7 @@ function Insertuser() {
             required
           />
         </div>
+        {/* Contraseña */}
         <div>
           <label>Contraseña:</label>
           <input
@@ -103,6 +110,7 @@ function Insertuser() {
             required
           />
         </div>
+        {/* Teléfono */}
         <div>
           <label>Teléfono:</label>
           <input
@@ -111,10 +119,11 @@ function Insertuser() {
             value={formData.telefono}
             onChange={handleChange}
             required
-            maxLength={10}
-            minLength={10}
+            maxLength="10"
+            minLength="10"
           />
         </div>
+        {/* Tipo */}
         <div>
           <label>Tipo:</label>
           <select
@@ -127,6 +136,7 @@ function Insertuser() {
             <option value="administrador">Administrador</option>
           </select>
         </div>
+        {/* Pregunta de Recuperación */}
         <div>
           <label>Pregunta de Recuperación:</label>
           <select
@@ -140,6 +150,7 @@ function Insertuser() {
             <option value="mejorAmigo">Mejor Amigo</option>
           </select>
         </div>
+        {/* Respuesta de Pregunta */}
         <div>
           <label>Respuesta de Pregunta:</label>
           <input
@@ -150,7 +161,8 @@ function Insertuser() {
             required
           />
         </div>
-        <div>
+        {/* Código de Recuperación */}
+        {/*<div>
           <label>Código de Recuperación:</label>
           <input
             type="text"
@@ -158,7 +170,8 @@ function Insertuser() {
             value={formData.codigoRecuperacion}
             onChange={handleChange}
           />
-        </div>
+        </div>*/}
+        {/* Dispositivo */}
         <div>
           <label>Dispositivo:</label>
           <input
@@ -166,8 +179,8 @@ function Insertuser() {
             name="dispositivo"
             value={formData.dispositivo}
             onChange={handleChange}
-            maxLength={10}
-            minLength={10}
+            maxLength="10"
+            minLength="10"
           />
         </div>
         <button type="submit">Agregar Usuario</button>
