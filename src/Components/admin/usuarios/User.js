@@ -88,7 +88,7 @@ function User() {
         "El usuario ha sido actualizado con éxito",
         "success"
       );
-      setIsEditing(false);
+      setIsEditing(false); // Cerrar el modal de edición después de guardar cambios
     } catch (error) {
       Swal.fire(
         "Error",
