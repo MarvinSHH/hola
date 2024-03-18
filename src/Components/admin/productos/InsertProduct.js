@@ -15,6 +15,19 @@ function InsertProduct() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setFormData({ ...formData, ruta: reader.result });
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -94,12 +107,11 @@ function InsertProduct() {
           </select>
         </div>
         <div>
-          <label>Ruta:</label>
+          <label>Imagen:</label>
           <input
-            type="text"
-            name="ruta"
-            value={formData.ruta}
-            onChange={handleChange}
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
             required
           />
         </div>

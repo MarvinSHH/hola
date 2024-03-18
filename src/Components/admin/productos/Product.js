@@ -4,8 +4,7 @@ import Swal from "sweetalert2";
 
 function Product() {
   const [products, setProducts] = useState([]);
-  const [editingProduct, setEditingProduct] = useState({});
-  const [isEditing, setIsEditing] = useState(false);
+  const [editingProduct, setEditingProduct] = useState(null);
 
   useEffect(() => {
     fetchProducts();
@@ -48,17 +47,13 @@ function Product() {
     }
   };
 
-  const showEditModal = (product) => {
-    setEditingProduct(product);
-    setIsEditing(true);
-  };
-
   const handleEditChange = (e) => {
     const { name, value } = e.target;
     setEditingProduct((prev) => ({ ...prev, [name]: value }));
   };
 
   const saveChanges = async () => {
+    if (!editingProduct) return;
     try {
       const response = await fetch(
         `https://apibackend-one.vercel.app/api/productos/${editingProduct._id}`,
@@ -71,20 +66,14 @@ function Product() {
       if (!response.ok) {
         throw new Error("Error al actualizar producto");
       }
-
-      // Actualizamos el estado de `products` de forma que refleje la actualización
-      setProducts((currentProducts) =>
-        currentProducts.map((product) =>
-          product._id === editingProduct._id ? editingProduct : product
-        )
-      );
-
+      await response.json(); // Suponiendo que la API devuelve el producto actualizado
       Swal.fire(
         "Actualizado",
         "El producto ha sido actualizado con éxito",
         "success"
       );
-      setIsEditing(false); // Cerrar el modal de edición después de guardar cambios
+      setEditingProduct(null); // Resetear el producto en edición
+      fetchProducts(); // Recargar los productos actualizados
     } catch (error) {
       Swal.fire(
         "Error",
@@ -103,14 +92,25 @@ function Product() {
       <ul>
         {products.map((product) => (
           <li key={product._id}>
-            {product.nombre} - {product.descripcion} - {product.precio} -{" "}
-            {product.categoria} - {product.ruta}
+            <div>
+              <h3>{product.nombre}</h3>
+              <p>{product.descripcion}</p>
+              <p>Precio: {product.precio}</p>
+              <p>Categoría: {product.categoria}</p>
+              {product.ruta && (
+                <img
+                  src={product.ruta}
+                  alt={product.nombre}
+                  style={{ maxWidth: "100px" }}
+                />
+              )}
+            </div>
             <button onClick={() => deleteProduct(product._id)}>Eliminar</button>
-            <button onClick={() => showEditModal(product)}>Editar</button>
+            <button onClick={() => setEditingProduct(product)}>Editar</button>
           </li>
         ))}
       </ul>
-      {isEditing && (
+      {editingProduct && (
         <div
           style={{
             position: "fixed",
@@ -122,44 +122,43 @@ function Product() {
           }}
         >
           <h2>Editar Producto</h2>
-          {/* Aquí, cada campo a editar, asegurándote de que cada input tenga el valor del estado editingProduct y onChange maneje los cambios */}
           <label>Nombre:</label>
           <input
             type="text"
             name="nombre"
-            value={editingProduct.nombre}
+            value={editingProduct.nombre || ""}
             onChange={handleEditChange}
           />
           <label>Descripción:</label>
           <input
             type="text"
             name="descripcion"
-            value={editingProduct.descripcion}
+            value={editingProduct.descripcion || ""}
             onChange={handleEditChange}
           />
           <label>Precio:</label>
           <input
             type="text"
             name="precio"
-            value={editingProduct.precio}
+            value={editingProduct.precio || ""}
             onChange={handleEditChange}
           />
           <label>Categoría:</label>
           <input
             type="text"
             name="categoria"
-            value={editingProduct.categoria}
+            value={editingProduct.categoria || ""}
             onChange={handleEditChange}
           />
           <label>Ruta:</label>
           <input
             type="text"
             name="ruta"
-            value={editingProduct.ruta}
+            value={editingProduct.ruta || ""}
             onChange={handleEditChange}
           />
           <button onClick={saveChanges}>Guardar Cambios</button>
-          <button onClick={() => setIsEditing(false)}>Cancelar</button>
+          <button onClick={() => setEditingProduct(null)}>Cancelar</button>
         </div>
       )}
     </div>

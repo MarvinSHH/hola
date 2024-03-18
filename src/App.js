@@ -47,7 +47,7 @@ const App = () => {
             <Route path="/product" element={<Product />} />
             <Route path="/user" element={<User />} />
             <Route path="/insert-product" element={<InsertProduct />} />;
-            <Route path="/InsertUser" element={<InsertUser />} />;
+            <Route path="/insert-user" element={<InsertUser />} />;
             {/* Para poder usar link para navegar se tienen que defiinir aqui 
             usando todo como esta, ponienndo la ruta y el renderizazdo, y definiendolo al principio */}
           </Routes>
