@@ -13,7 +13,8 @@ function Product() {
   const fetchProducts = async () => {
     try {
       const response = await fetch(
-        "https://apibackend-one.vercel.app/api/productos"
+        //"https://apibackend-one.vercel.app/api/productos"
+        "https://api-pry-v2.vercel.app/api/productos"
       );
       if (!response.ok) {
         throw new Error("Error al obtener productos");
