@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import colores from "../../paletaColores.js";
+import styles from "../../estilos.js";
 
 function Product() {
   const [products, setProducts] = useState([]);
@@ -13,8 +15,7 @@ function Product() {
   const fetchProducts = async () => {
     try {
       const response = await fetch(
-        //"https://apibackend-one.vercel.app/api/productos"
-        "https://api-pry-v2.vercel.app/api/productos"
+        "https://apibackend-one.vercel.app/api/productos"
       );
       if (!response.ok) {
         throw new Error("Error al obtener productos");
@@ -85,32 +86,158 @@ function Product() {
   };
 
   return (
-    <div>
-      <h1>Productos</h1>
+    <div style={{ backgroundColor: colores.fondoPrincipal, padding: "20px" }}>
+      <h1 style={{ color: colores.negro, textAlign: "center" }}>Productosx</h1>
       <Link to="/insert-product">
-        <button>Agregar Producto</button>
+        <button
+          style={{ backgroundColor: colores.boton, color: colores.textoBoton }}
+        >
+          Agregar Producto
+        </button>
       </Link>
-      <ul>
-        {products.map((product) => (
-          <li key={product._id}>
-            <div>
-              <h3>{product.nombre}</h3>
-              <p>{product.descripcion}</p>
-              <p>Precio: {product.precio}</p>
-              <p>Categoría: {product.categoria}</p>
-              {product.ruta && (
-                <img
-                  src={product.ruta}
-                  alt={product.nombre}
-                  style={{ maxWidth: "100px" }}
-                />
-              )}
-            </div>
-            <button onClick={() => deleteProduct(product._id)}>Eliminar</button>
-            <button onClick={() => setEditingProduct(product)}>Editar</button>
-          </li>
-        ))}
-      </ul>
+      <table
+        style={{ width: "100%", borderCollapse: "collapse", marginTop: "20px" }}
+      >
+        <thead>
+          <tr>
+            {/* Aplicamos estilos para centrar el texto y agregar contorno a los encabezados */}
+            <th
+              style={{
+                backgroundColor: colores.fondoHeader,
+                color: colores.textoHeader,
+                textAlign: "center",
+                border: `1px solid ${colores.separador}`,
+              }}
+            >
+              Nombre
+            </th>
+            <th
+              style={{
+                backgroundColor: colores.fondoHeader,
+                color: colores.textoHeader,
+                textAlign: "left",
+                border: `1px solid ${colores.separador}`,
+              }}
+            >
+              Descripción
+            </th>
+            <th
+              style={{
+                backgroundColor: colores.fondoHeader,
+                color: colores.textoHeader,
+                textAlign: "center",
+                border: `1px solid ${colores.separador}`,
+              }}
+            >
+              Precio
+            </th>
+            <th
+              style={{
+                backgroundColor: colores.fondoHeader,
+                color: colores.textoHeader,
+                textAlign: "center",
+                border: `1px solid ${colores.separador}`,
+              }}
+            >
+              Categoría
+            </th>
+            <th
+              style={{
+                backgroundColor: colores.fondoHeader,
+                color: colores.textoHeader,
+                textAlign: "center",
+                border: `1px solid ${colores.separador}`,
+              }}
+            >
+              Imagen
+            </th>
+            <th
+              style={{
+                backgroundColor: colores.fondoHeader,
+                color: colores.textoHeader,
+                textAlign: "center",
+                border: `1px solid ${colores.separador}`,
+              }}
+            >
+              Acciones
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product) => (
+            <tr key={product._id}>
+              {/* Aplicamos estilos para centrar el texto y agregar contorno a las celdas */}
+              <td
+                style={{
+                  textAlign: "center",
+                  border: `1px solid ${colores.separador}`,
+                }}
+              >
+                {product.nombre}
+              </td>
+              <td style={{ border: `1px solid ${colores.separador}` }}>
+                {product.descripcion}
+              </td>
+              <td
+                style={{
+                  textAlign: "center",
+                  border: `1px solid ${colores.separador}`,
+                }}
+              >
+                {product.precio}
+              </td>
+              <td
+                style={{
+                  textAlign: "center",
+                  border: `1px solid ${colores.separador}`,
+                }}
+              >
+                {product.categoria}
+              </td>
+              <td
+                style={{
+                  textAlign: "center",
+                  border: `1px solid ${colores.separador}`,
+                }}
+              >
+                {product.ruta && (
+                  <img
+                    src={product.ruta}
+                    alt={product.nombre}
+                    style={{ maxWidth: "100px" }}
+                  />
+                )}
+              </td>
+              <td
+                style={{
+                  textAlign: "center",
+                  border: `1px solid ${colores.separador}`,
+                }}
+              >
+                <button
+                  onClick={() => deleteProduct(product._id)}
+                  style={{
+                    backgroundColor: colores.boton,
+                    color: colores.textoBoton,
+                    marginRight: "5px",
+                  }}
+                >
+                  Eliminar
+                </button>
+                <button
+                  onClick={() => setEditingProduct(product)}
+                  style={{
+                    backgroundColor: colores.boton,
+                    color: colores.textoBoton,
+                  }}
+                >
+                  Editar
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       {editingProduct && (
         <div
           style={{

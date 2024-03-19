@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import colores from "../../paletaColores.js";
 
 function User() {
   const [users, setUsers] = useState([]);
@@ -52,22 +53,54 @@ function User() {
   };
 
   return (
-    <div>
-      <h2>Usuarios</h2>
+    <div style={{ backgroundColor: colores.fondoPrincipal, padding: "20px" }}>
+      <h2 style={{ color: colores.negro, textAlign: "center" }}>Usuarios</h2>
       <Link to="/insert-user">
-        <button>Agregar Usuario</button>
+        <button
+          style={{ backgroundColor: colores.boton, color: colores.textoBoton }}
+        >
+          Agregar Usuario
+        </button>
       </Link>
-      <ul>
-        {users.map((user) => (
-          <li key={user._id}>
-            {user.nombre} - {user.apellido} - {user.correo} - {user.contraseña}{" "}
-            - {user.telefono} - {user.tipo} - {user.preguntaRecuperacion} -{" "}
-            {user.respuestaPregunta} - {user.dispositivo}
-            <button onClick={() => setEditingUser(user)}>Editar</button>
-            <button onClick={() => deleteUser(user._id)}>Eliminar</button>
-          </li>
-        ))}
-      </ul>
+      <table
+        style={{ width: "100%", borderCollapse: "collapse", marginTop: "20px" }}
+      >
+        <thead>
+          <tr>
+            <th style={tableHeaderStyle}>Nombre</th>
+            <th style={tableHeaderStyle}>Apellido</th>
+            <th style={tableHeaderStyle}>Correo</th>
+            <th style={tableHeaderStyle}>Teléfono</th>
+            <th style={tableHeaderStyle}>Tipo</th>
+            <th style={tableHeaderStyle}>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user._id}>
+              <td style={tableCellStyle}>{user.nombre}</td>
+              <td style={tableCellStyle}>{user.apellido}</td>
+              <td style={tableCellStyle}>{user.correo}</td>
+              <td style={tableCellStyle}>{user.telefono}</td>
+              <td style={tableCellStyle}>{user.tipo}</td>
+              <td style={tableCellStyle}>
+                <button
+                  onClick={() => setEditingUser(user)}
+                  style={buttonStyle}
+                >
+                  Editar
+                </button>
+                <button
+                  onClick={() => deleteUser(user._id)}
+                  style={buttonStyle}
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       {editingUser && (
         <div>
           <h2>Editar Usuario</h2>
@@ -126,3 +159,20 @@ function User() {
 }
 
 export default User;
+const tableHeaderStyle = {
+  backgroundColor: colores.fondoHeader,
+  color: colores.textoHeader,
+  textAlign: "center",
+  border: `1px solid ${colores.separador}`,
+};
+
+const tableCellStyle = {
+  textAlign: "center",
+  border: `1px solid ${colores.separador}`,
+};
+
+const buttonStyle = {
+  backgroundColor: colores.boton,
+  color: colores.textoBoton,
+  margin: "0 5px",
+};

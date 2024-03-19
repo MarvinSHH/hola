@@ -1,32 +1,47 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Importar desde react-router-dom para la navegación
+import { Link } from "react-router-dom";
 import styles from "./estilos";
 
 const FrmRecuperar = () => {
-  const [usuario, setUsuario] = useState("");
   const [correo, setCorreo] = useState("");
+  const [mensaje, setMensaje] = useState(""); // Nuevo estado para mostrar mensajes al usuario
 
-  const handleRegister = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Registro:", {
-      usuario,
-      correo,
-    });
+    setMensaje(""); // Resetea el mensaje cada vez que se envía el formulario
+
+    try {
+      const response = await fetch(
+        "https://apibackend-one.vercel.app/api/usuarios/recuperar-contraseña",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ correo }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("No se pudo iniciar el proceso de recuperación");
+      }
+
+      const data = await response.json();
+      setMensaje(
+        "Si tus datos son correctos, recibirás un correo con instrucciones para recuperar tu contraseña."
+      );
+    } catch (error) {
+      console.error("Error al recuperar la contraseña:", error);
+      setMensaje(
+        "Error al intentar recuperar la contraseña. Por favor, intenta nuevamente."
+      );
+    }
   };
 
   return (
     <div style={styles.formContainer}>
       <h2 style={styles.title}>Recuperar Contraseña</h2>
-      <form onSubmit={handleRegister}>
-        <label style={styles.label}>Usuario:</label>
-        <input
-          style={styles.input}
-          type="text"
-          placeholder="Usuario"
-          value={usuario}
-          onChange={(e) => setUsuario(e.target.value)}
-        />
-
+      <form onSubmit={handleSubmit}>
         <label style={styles.label}>Correo:</label>
         <input
           style={styles.input}
@@ -40,11 +55,13 @@ const FrmRecuperar = () => {
           ¡Recuperar!
         </button>
       </form>
-      {/* Enlace a la página de login usando React Router */}
+      {mensaje && <p style={{ color: "red" }}>{mensaje}</p>}{" "}
+      {/* Muestra mensajes al usuario */}
       <Link to=".." style={styles.loginButtonText}>
         Cancelar
       </Link>
     </div>
   );
 };
+
 export default FrmRecuperar;

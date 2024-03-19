@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "../../estilos";
 
 function InsertProduct() {
   const initialFormData = {
@@ -61,61 +62,61 @@ function InsertProduct() {
   };
 
   return (
-    <div>
-      <h2>Agregar producto</h2>
+    <div style={styles.formContainer}>
+      <h2 style={styles.title}>Agregar producto</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nombre:</label>
-          <input
-            type="text"
-            name="nombre"
-            value={formData.nombre}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Descripcion:</label>
-          <input
-            type="text"
-            name="descripcion"
-            value={formData.descripcion}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Precio:</label>
-          <input
-            type="text"
-            name="precio"
-            value={formData.precio}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Categoria:</label>
-          <select
-            name="categoria"
-            value={formData.categoria}
-            onChange={handleChange}
-            required
-          >
-            <option value="pequeño">Raza pequeña</option>
-            <option value="grande">Raza grandess</option>
-          </select>
-        </div>
-        <div>
-          <label>Imagen:</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            required
-          />
-        </div>
-        <button type="submit">Agregar producto</button>
+        <label style={styles.label}>Nombre:</label>
+        <input
+          style={styles.input}
+          type="text"
+          name="nombre"
+          value={formData.nombre}
+          onChange={handleChange}
+          required
+        />
+
+        <label style={styles.label}>Descripcion:</label>
+        <input
+          style={styles.input}
+          type="text"
+          name="descripcion"
+          value={formData.descripcion}
+          onChange={handleChange}
+          required
+        />
+
+        <label style={styles.label}>Precio:</label>
+        <input
+          style={styles.input}
+          type="text"
+          name="precio"
+          value={formData.precio}
+          onChange={handleChange}
+          required
+        />
+
+        <label style={styles.label}>Categoria:</label>
+        <select
+          name="categoria"
+          value={formData.categoria}
+          onChange={handleChange}
+          required
+        >
+          <option value="pequeño">Raza pequeña</option>
+          <option value="grande">Raza grandess</option>
+        </select>
+        <br />
+        <label style={styles.label}>Imagen:</label>
+        <input
+          style={styles.input}
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          required
+        />
+        <button style={styles.registerButton} type="submit">
+          Agregar producto
+        </button>
       </form>
     </div>
   );

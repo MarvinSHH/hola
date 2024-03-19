@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import styles from "../../estilos";
 
 function Insertuser() {
   const initialState = {
@@ -63,127 +64,121 @@ function Insertuser() {
   };
 
   return (
-    <div>
-      <h2>Agregar Usuario</h2>
+    <div style={styles.formContainer}>
+      <h2 style={styles.title}>Agregar Usuario</h2>
       <form onSubmit={handleSubmit}>
         {/* Nombre */}
-        <div>
-          <label>Nombre:</label>
-          <input
-            type="text"
-            name="nombre"
-            value={formData.nombre}
-            onChange={handleChange}
-            required
-          />
+        <div style={styles.cincuenta}>
+          <div style={styles.inCincuenta}>
+            <label style={styles.label}>Nombre:</label>
+            <input
+              style={styles.input}
+              type="text"
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          {/* Apellido */}
+          <div style={styles.inCincuenta}>
+            <label style={styles.label}>Apellido:</label>
+            <input
+              style={styles.input}
+              type="text"
+              name="apellido"
+              value={formData.apellido}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
-        {/* Apellido */}
-        <div>
-          <label>Apellido:</label>
-          <input
-            type="text"
-            name="apellido"
-            value={formData.apellido}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Correo */}
-        <div>
-          <label>Correo:</label>
-          <input
-            type="email"
-            name="correo"
-            value={formData.correo}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Contraseña */}
-        <div>
-          <label>Contraseña:</label>
-          <input
-            type="password"
-            name="contraseña"
-            value={formData.contraseña}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Teléfono */}
-        <div>
-          <label>Teléfono:</label>
-          <input
-            type="text"
-            name="telefono"
-            value={formData.telefono}
-            onChange={handleChange}
-            required
-            maxLength="10"
-            minLength="10"
-          />
-        </div>
-        {/* Tipo */}
-        <div>
-          <label>Tipo:</label>
-          <select
-            name="tipo"
-            value={formData.tipo}
-            onChange={handleChange}
-            required
-          >
-            <option value="usuario">Usuario</option>
-            <option value="administrador">Administrador</option>
-          </select>
-        </div>
-        {/* Pregunta de Recuperación */}
-        <div>
-          <label>Pregunta de Recuperación:</label>
-          <select
-            name="preguntaRecuperacion"
-            value={formData.preguntaRecuperacion}
-            onChange={handleChange}
-            required
-          >
-            <option value="colorFavorito">Color Favorito</option>
-            <option value="nombreMascota">Nombre de Mascota</option>
-            <option value="mejorAmigo">Mejor Amigo</option>
-          </select>
-        </div>
-        {/* Respuesta de Pregunta */}
-        <div>
-          <label>Respuesta de Pregunta:</label>
-          <input
-            type="text"
-            name="respuestaPregunta"
-            value={formData.respuestaPregunta}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Código de Recuperación */}
-        {/*<div>
-          <label>Código de Recuperación:</label>
-          <input
-            type="text"
-            name="codigoRecuperacion"
-            value={formData.codigoRecuperacion}
-            onChange={handleChange}
-          />
-        </div>*/}
-        {/* Dispositivo */}
-        <div>
-          <label>Dispositivo:</label>
-          <input
-            type="text"
-            name="dispositivo"
-            value={formData.dispositivo}
-            onChange={handleChange}
-            maxLength="10"
-            minLength="10"
-          />
-        </div>
-        <button type="submit">Agregar Usuario</button>
+        <label style={styles.label}>Correo:</label>
+        <input
+          style={styles.input}
+          type="email"
+          name="correo"
+          value={formData.correo}
+          onChange={handleChange}
+          required
+        />
+        <label style={styles.label}>Contraseña:</label>
+        <input
+          style={styles.input}
+          type="password"
+          name="contraseña"
+          value={formData.contraseña}
+          onChange={handleChange}
+          required
+        />
+        <label style={styles.label}>Teléfono:</label>
+        <input
+          style={styles.input}
+          type="text"
+          name="telefono"
+          value={formData.telefono}
+          onChange={handleChange}
+          required
+          maxLength="10"
+          minLength="10"
+        />
+
+        <label style={styles.label}>Tipo:</label>
+        <select
+          name="tipo"
+          value={formData.tipo}
+          onChange={handleChange}
+          required
+        >
+          <option value="usuario">Usuario</option>
+          <option value="administrador">Administrador</option>
+        </select>
+        <br />
+        <label style={styles.label}>Pregunta de Recuperación:</label>
+        <select
+          name="preguntaRecuperacion"
+          value={formData.preguntaRecuperacion}
+          onChange={handleChange}
+          required
+        >
+          <option value="colorFavorito">Color Favorito</option>
+          <option value="nombreMascota">Nombre de Mascota</option>
+          <option value="mejorAmigo">Mejor Amigo</option>
+        </select>
+        <br />
+
+        <label style={styles.label}>Respuesta de Pregunta:</label>
+        <input
+          style={styles.input}
+          type="text"
+          name="respuestaPregunta"
+          value={formData.respuestaPregunta}
+          onChange={handleChange}
+          required
+        />
+
+        <label style={styles.label}>Código de Recuperación:</label>
+        <input
+          style={styles.input}
+          type="text"
+          name="codigoRecuperacion"
+          value={formData.codigoRecuperacion}
+          onChange={handleChange}
+        />
+
+        <label style={styles.label}>Dispositivo:</label>
+        <input
+          style={styles.input}
+          type="text"
+          name="dispositivo"
+          value={formData.dispositivo}
+          onChange={handleChange}
+          maxLength="10"
+          minLength="10"
+        />
+        <button style={styles.registerButton} type="submit">
+          Agregar Usuario
+        </button>
       </form>
     </div>
   );
