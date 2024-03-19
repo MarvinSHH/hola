@@ -31,8 +31,8 @@ import InsertUser from "./Components/admin/usuarios/InsertUser.js";
 const App = () => {
   return (
     <Router>
-      {/* <Header /> */}
-      <PrivHeader />
+      <Header />
+      {/*<PrivHeader />*/}
       {/*<PubHeader />*/}
       <main>
         <div style={styles.body}>
